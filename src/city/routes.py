@@ -1,14 +1,17 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 
 from .schemas import CityRequest, CityResponse
-
-from src.openai import open_ai_client
 from src.weather import get_weather
+
+from src.generativeai import GenerativeAIText, get_chatgpt_generative_ai_text
 
 city_router = APIRouter(prefix="/city", tags=["city"])
 
 @city_router.post("/question_generate")
-def question_generate(request: CityRequest) -> CityResponse:
+def question_generate(
+    request: CityRequest,
+    generativeai_text: GenerativeAIText = Depends(get_chatgpt_generative_ai_text)
+    ) -> CityResponse:
     try:
         
         weather = get_weather(request.entrada)
@@ -24,14 +27,8 @@ def question_generate(request: CityRequest) -> CityResponse:
             - Tom: divertido
         """
 
-        response = open_ai_client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": prompt},
-            ], max_tokens=200)
+        generated_text = generativeai_text.generate_text(prompt=prompt, system_prompt=system_prompt)
 
-        generated_text = response.choices[0].message.content.strip()
         return CityResponse(saida=generated_text)
 
     except Exception as e:
