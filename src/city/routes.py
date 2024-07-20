@@ -3,6 +3,7 @@ from fastapi import APIRouter, HTTPException
 from .schemas import CityRequest, CityResponse
 
 from src.openai import open_ai_client
+from src.weather import get_weather
 
 city_router = APIRouter(prefix="/city", tags=["city"])
 
@@ -10,6 +11,8 @@ city_router = APIRouter(prefix="/city", tags=["city"])
 def question_generate(request: CityRequest) -> CityResponse:
     try:
         
+        weather = get_weather(request.entrada)
+
         system_prompt = f"""
             Voce ira gerar um breve texto divertido a partir do clima atual e nome da cidade, e apenas isso.
         """
@@ -17,7 +20,7 @@ def question_generate(request: CityRequest) -> CityResponse:
         prompt = f"""
             Gere o texto com base nos seguintes dados:
             - Nome da cidade: {request.entrada}
-            - Clima atual: calor
+            - Clima atual: {weather}
             - Tom: divertido
         """
 
