@@ -36,13 +36,14 @@ POST /city/question_generate
 
 > **Info**: Access Makefile to see all executables.
 
- 1) Run with python locally
- 2) Run with docker
- 3) Tests
+ 1) Install project
+ 2) Run with python
+ 3) Run with docker
+ 4) Tests
 
 -----
 
-#### 1) Install project and run it with Python (Using Bash Terminal)
+#### 1) Installation
 
 Previously you have to installed:
 - [Python3.10>=](https://www.python.org/downloads/)
@@ -51,14 +52,42 @@ Previously you have to installed:
 
 ###### Installation
 
+Clone the project
+
 ```bash
-~ git clone ... api
-~ virtualenv env
-~ source env/bin/activate
-~ cd api
-~ pip install -r requirements.txt
+  git clone ... api
 ```
-###### Configuration
+Go to project directory
+
+```bash
+  cd api
+```
+
+Create .env file
+
+```bash
+  cp .env.sample .env
+```
+
+> **Info**: Access **.env** and add your informations.
+
+#### 2) Run with python
+
+Create virtualenv and activate it
+
+```bash
+  virtualenv env
+```
+
+```bash
+  source env/bin/activate
+```
+
+Install dependencies
+
+```bash
+  pip install -r requirements.txt
+```
 
 Run locally
 ```bash
@@ -66,14 +95,8 @@ make run
 # or
 fastapi run
 ```
-Run tests
-```bash
-make test
-# or
-pytest -v
-```
 
-#### 2) Running with docker
+#### 3) Running with docker
 
 Required [docker](https://docs.docker.com/engine/install/) with [compose](https://docs.docker.com/compose/) already installed
 
@@ -83,7 +106,7 @@ make docker-up
 docker compose --file docker-compose.development.yml up --build
 ```
 
-#### 3) Run tests
+#### 4) Run tests (required installation locally with python. Step 2)
 
 ```bash
 make test
