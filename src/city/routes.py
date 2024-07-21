@@ -18,7 +18,7 @@ def question_generate(
         weather: WeatherDTO = weather_api.get_weather(request.entrada)
 
         system_prompt = f"""
-            Voce ira gerar um breve texto divertido a partir do clima atual e nome da cidade, e apenas isso.
+            Voce ira gerar um breve texto a partir do nome da cidade, clima atual e um tom, apenas isso.
         """
 
         prompt = f"""
