@@ -1,21 +1,21 @@
 from fastapi import APIRouter, Depends, HTTPException
 
 from .schemas import CityRequest, CityResponse
-from src.weather import get_weather
 
 from src.generativeai import GenerativeAIText, get_chatgpt_generative_ai_text
+from src.weather import WeatherApi, get_wttr_weather_api
 
 city_router = APIRouter(prefix="/city", tags=["city"])
 
 @city_router.post("/question_generate")
 def question_generate(
     request: CityRequest,
-    generativeai_text: GenerativeAIText = Depends(get_chatgpt_generative_ai_text)
+    generativeai_text: GenerativeAIText = Depends(get_chatgpt_generative_ai_text),
+    weather_api: WeatherApi = Depends(get_wttr_weather_api)
     ) -> CityResponse:
     try:
         
-        weather = get_weather(request.entrada)
-
+        weather = weather_api.get_weather(request.entrada)
         system_prompt = f"""
             Voce ira gerar um breve texto divertido a partir do clima atual e nome da cidade, e apenas isso.
         """
