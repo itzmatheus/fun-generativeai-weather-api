@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 from main import app
 from src.generativeai import GenerativeAIText, get_chatgpt_generative_ai_text
-from src.weather import WeatherApi, get_wttr_weather_api
+from src.weather import WeatherApi, get_wttr_weather_api, WeatherDTO
 
 client = TestClient(app)
 
@@ -11,7 +11,7 @@ class MockGenerativeAIText(GenerativeAIText):
     
 class MockWeatherApi(WeatherApi):
     def get_weather(self, location: str) -> str:
-        return "Sunny"
+        return WeatherDTO(description="Sunny")
     
 def override_get_chatgpt_generative_ai_text() -> GenerativeAIText:
     return MockGenerativeAIText()
