@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  generative-api:
+    build: .
+    ports:
+      - 8000:8000
+    command: fastapi run --port=8000 --host=0.0.0.0 --reload
+    volumes:
+      - .:/app
