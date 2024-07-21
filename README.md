@@ -32,6 +32,20 @@ POST /city/question_generate
 }
 ```
 
+## Packages
+
+- src/
+    - city/
+        - API Route for question generation.
+    - config/
+        - Project global information used in code.
+    - generativeai/
+        - Integration with external Generative AI Apis.
+        - Class integrated with OpenAI Chat GPT do generate text.
+    - weather/
+        - Integration with external Weather api.
+        - Class integrated with WTTR Api for get info about weather of a city.
+
 ## Installation/Running
 
 > **Info**: Access Makefile to see all executables.
