@@ -114,6 +114,13 @@ make test
 pytest -v
 ```
 
+
+## Environment Variables
+
+To run this project, you will need to configure the following environment variables to your .env file
+
+`OPENAI_API_KEY` - https://platform.openai.com/docs/quickstart
+
 ## Tech Stack
 
 **API Back End:** [FastAPI](https://fastapi.tiangolo.com/)
