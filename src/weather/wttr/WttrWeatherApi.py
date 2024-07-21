@@ -1,15 +1,15 @@
 import requests
 
-from src.weather import WeatherApi
+from src.weather import WeatherApi, WeatherDTO
 
 class WttrWeatherApi(WeatherApi):
 
     def __init__(self):
         self.url = "https://wttr.in"
 
-    def get_weather(self, location: str) -> str:
+    def get_weather(self, location: str) -> WeatherDTO:
         response = requests.get(f"{self.url}/{location}?format=j1&lang=pt")
-        return response.json().get("current_condition")[0].get("lang_pt")[0].get("value")
+        return WeatherDTO.from_dict(response.json())
 
 def get_wttr_weather_api() -> WeatherApi:
     return WttrWeatherApi()
