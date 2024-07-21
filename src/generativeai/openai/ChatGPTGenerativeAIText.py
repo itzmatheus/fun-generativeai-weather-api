@@ -21,7 +21,7 @@ class ChatGPTGenerativeAIText(GenerativeAIText):
             messages=messages,
             max_tokens=max_tokens)
         
-        return response.choices[0].message.content.strip()
+        return response.choices[0].message.content.replace('\\"', '').strip()
 
 def get_chatgpt_generative_ai_text() -> GenerativeAIText:
     return ChatGPTGenerativeAIText(OPEN_AI_KEY)
