@@ -8,3 +8,5 @@ services:
     command: fastapi run --port=8000 --host=0.0.0.0 --reload
     volumes:
       - .:/app
+    env_file:
+      - .env
