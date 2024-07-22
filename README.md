@@ -141,6 +141,9 @@ To run this project, you will need to configure the following environment variab
 `LM_STUDIO_BASE_URL`
 `LM_STUDIO_MODEL`
 
+> **Warning**: If you set LM_STUDIO_API_KEY, LM_STUDIO_BASE_URL and LM_STUDIO_MODEL values, the project not Open AI Implementation.
+
+
 ## Integrated locally with LM Studio Local Inference Server
 
 This project have a class `src/generativeai/lmstudio/DolphinGenerativeAIText` that implement dolphin model (TheBloke/dolphin-2.2.1-mistral-7B-GGUF/dolphin-2.2.1-mistral-7b.Q5_K_M.gguf), so basically you have to configure the enviroments LM_STUDIO in .env, and the project adjust itsel to connect. Make sure you have started the server in LM Studio.
