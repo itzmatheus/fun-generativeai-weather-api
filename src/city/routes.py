@@ -3,7 +3,7 @@ from fastapi import APIRouter, Depends, HTTPException
 
 from .schemas import CityRequest, CityResponse
 
-from src.generativeai import GenerativeAIText, get_chatgpt_generative_ai_text
+from src.generativeai import GenerativeAIText, get_generativeai_text_factory
 from src.weather import WeatherApi, get_wttr_weather_api, WeatherDTO
 
 city_router = APIRouter(prefix="/city", tags=["city"])
@@ -11,7 +11,7 @@ city_router = APIRouter(prefix="/city", tags=["city"])
 @city_router.post("/question_generate")
 def question_generate(
     request: CityRequest,
-    generativeai_text: Annotated[GenerativeAIText, Depends(get_chatgpt_generative_ai_text)],
+    generativeai_text: Annotated[GenerativeAIText, Depends(get_generativeai_text_factory)],
     weather_api: Annotated[WeatherApi, Depends(get_wttr_weather_api)]
     ) -> CityResponse:
     try:
