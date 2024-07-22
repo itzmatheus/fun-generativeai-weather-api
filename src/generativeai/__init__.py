@@ -1,2 +1,4 @@
 from .GenerativeAIText import GenerativeAIText
 from .openai.ChatGPTGenerativeAIText import get_chatgpt_generative_ai_text
+from .lmstudio.DolphinGenerativeAIText import get_dolphin_generative_ai_text
+from .GenerativeAITextFactory import get_generativeai_text_factory
