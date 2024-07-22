@@ -34,6 +34,9 @@ POST /city/question_generate
 
 ## Packages
 
+- docs/
+    - info about deploy this api in cloud.
+    - a proposal for architecture in cloud for this api.
 - src/
     - city/
         - API Route for question generation.
