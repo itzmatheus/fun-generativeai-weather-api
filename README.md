@@ -73,7 +73,7 @@ Previous you have to installed:
 Clone the project
 
 ```bash
-  https://github.com/itzmatheus/fun-generativeai-weather-api api
+  git https://github.com/itzmatheus/fun-generativeai-weather-api api
 ```
 Go to project directory
 
