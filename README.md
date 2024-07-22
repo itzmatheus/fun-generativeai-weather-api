@@ -62,7 +62,7 @@ POST /city/question_generate
 
 #### 1) Installation
 
-Previously you have to installed:
+Previous you have to installed:
 - [Python3.10>=](https://www.python.org/downloads/)
 - [Python3-pip](https://pip.pypa.io/en/stable/installation/)
 - [Python3-virtualenv](https://docs.python.org/3/library/venv.html)
@@ -72,7 +72,7 @@ Previously you have to installed:
 Clone the project
 
 ```bash
-  git clone ... api
+  https://github.com/itzmatheus/fun-generativeai-weather-api api
 ```
 Go to project directory
 
