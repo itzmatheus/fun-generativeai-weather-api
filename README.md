@@ -45,6 +45,7 @@ POST /city/question_generate
     - generativeai/
         - Integration with external Generative AI Apis.
         - Class integrated with OpenAI Chat GPT do generate text.
+        - Class integrated with Dolphin in LM Studio Server to generate text.
     - weather/
         - Integration with external Weather api.
         - Class integrated with WTTR Api for get info about weather of a city.
@@ -131,12 +132,22 @@ make test
 pytest -v
 ```
 
-
 ## Environment Variables
 
 To run this project, you will need to configure the following environment variables to your .env file
 
 `OPENAI_API_KEY` - https://platform.openai.com/docs/quickstart
+`LM_STUDIO_API_KEY`
+`LM_STUDIO_BASE_URL`
+`LM_STUDIO_MODEL`
+
+## Integrated locally with LM Studio Local Inference Server
+
+This project have a class `src/generativeai/lmstudio/DolphinGenerativeAIText` that implement dolphin model (TheBloke/dolphin-2.2.1-mistral-7B-GGUF/dolphin-2.2.1-mistral-7b.Q5_K_M.gguf), so basically you have to configure the enviroments LM_STUDIO in .env, and the project adjust itsel to connect. Make sure you have started the server in LM Studio.
+
+You can also create another interface to Gen AI Text implementing `src/src/generativeai/GenerativeAIText` model and configuring the factory `src/generativeai/GenerativeAITextFactory.py`.
+
+[This tutorial](https://www.youtube.com/watch?v=m7PvtNHsUa8) will help you to how run locally LM Studio with a model.
 
 ## Tech Stack
 
