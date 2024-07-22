@@ -4,5 +4,5 @@ class WeatherDTO:
 
     @classmethod
     def from_dict(cls, data: dict):
-        description = data.get("current_condition")[0].get("lang_pt")[0].get("value")
+        description = data.get("current_condition")[0].get("weatherDesc")[0].get("value")
         return cls(description)
